@@ -24,4 +24,22 @@ public class CommonUtils {
         }
         return calibrationInput;
     }
+
+    public List<String> readGameData() {
+        List<String> gameInput = new ArrayList<>();
+        URL url = getClass().getResource("/game-day2-input.txt");
+        try {
+            assert url != null;
+            try(BufferedReader br = new BufferedReader(new FileReader(url.getPath()))) {
+                String line = br.readLine();
+                while (line != null) {
+                    gameInput.add(line);
+                    line = br.readLine();
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return gameInput;
+    }
 }
